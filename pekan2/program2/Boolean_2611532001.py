@@ -1,15 +1,15 @@
-# nama variabel ditambah 4 digit nim terakhir contoh: nama_1234
-# deklarasi variabel dengan tipe data Boolean
+# Nama variabel ditambah 4 digit nim terakhir contoh: nama_1234
+# Deklarasi variabel dengan tipe data Boolean
 
 is_lulus_2001 = True
 is_cumlaude_2001 = True
 
-# menggunakan boolean
+# Menggunakan boolean
 nilai_2001 = 85
 batas_lulus_2001 = 75
 
-# menentukan nilai boolean dari kondisi
-status_kelulusan_2001 = nilai_2001 >= batas_lulus_2001 # hasilnya akan True
+# Menentukan nilai boolean dari kondisi
+status_kelulusan_2001 = nilai_2001 >= batas_lulus_2001 # Hasilnya akan True
 
 print("=== Check Kelulusan ===")
 print("Nilai: ", nilai_2001)
