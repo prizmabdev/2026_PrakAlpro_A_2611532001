@@ -1,5 +1,5 @@
 # nama variabel ditambah 4 digit nim terakhir contoh: nama_1234
-#ganti programnya dan data masing masing
+# ganti programnya dan data masing masing
 
 nama_2001 = "Rizki Ramadhani Al Michtari"
 jenis_kelamin_2001 = 'L'
