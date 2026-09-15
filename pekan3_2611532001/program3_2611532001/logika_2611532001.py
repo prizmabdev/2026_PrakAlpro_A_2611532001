@@ -21,7 +21,7 @@ hasil_2001 = a1_2001 or a2_2001
 print("\nDisjungsi (OR)")
 print("A1 or A2 =", hasil_2001)
 
-# Negasi A11 membalik nilai A1
+# Negasi A1: membalik nilai A1
 hasil_2001 = not a1_2001
 print("\nNegasi A1 (NOT)")
 print("not A1 =", hasil_2001)
