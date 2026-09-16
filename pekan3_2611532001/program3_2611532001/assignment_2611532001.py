@@ -17,19 +17,19 @@ print("Hasil =", hasil_2001)
 
 # Assignment penambahan
 hasil_2001 = angka1_2001
-hasil_2001 = angka2_2001
+hasil_2001 += angka2_2001
 print("\nAssignment penambahan (+-)")
 print("Hasil =", hasil_2001)
 
 # Assignment pengurangan
 hasil_2001 = angka1_2001
-hasil_2001 = angka2_2001
+hasil_2001 -= angka2_2001
 print("\nAssignment pengurangan (-)")
 print("Hasil =", hasil_2001)
 
 # Assignment perkalian
 angka1_2001 = hasil_2001
-angka2_2001 = hasil_2001
+angka2_2001 *= hasil_2001
 print("\nAssignment perkalian (*=)")
 print("Hasil =", hasil_2001)
 

@@ -43,17 +43,16 @@ print("objek2_2001 =", objek2_2001)
 print("objek3_2001 =", objek3_2001)
 
 # Operator is
-hasil_2001 = objek1_2001 is objek3_2001
+hasil_2001 = objek1_2001 is objek2_2001
 print("\nOperator identitas IS")
-print("objek1_2001 is objek2_2001", hasil_2001)
+print("objek1_2001 is objek2_2001 =", hasil_2001)
 
 # Operator is not
 hasil_2001 = objek1_2001 is not objek3_2001
 print("\nOperator identitas IS NOT")
-print("objek1_2001 is not objek3_2001", hasil_2001)
+print("objek1_2001 is not objek3_2001 =", hasil_2001)
 
 # Membandingkan identitas dan nilai
 print("\nPerbandingan identitas dan nilai")
-print("objek1_2001 is objek3_2001", objek1_2001 is objek3_2001)
-print("objek1_2001 == objek3_2001", objek1_2001 == objek3_2001)
-
+print("objek1_2001 is objek3_2001 =", objek1_2001 is objek3_2001)
+print("objek1_2001 == objek3_2001 =", objek1_2001 == objek3_2001)

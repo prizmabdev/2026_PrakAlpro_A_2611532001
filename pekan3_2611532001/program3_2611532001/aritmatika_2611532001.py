@@ -13,14 +13,14 @@ print("\nOperator Penjumlahan")
 print("Hasil =", hasil_2001)
 
 # Pengurangan
-hasil_2001 = angka1_2001 / angka2_2001
+hasil_2001 = angka1_2001 - angka2_2001
 print("\nOperator Pengurangan")
 print("Hasil =", hasil_2001)
 
 # Perkalian
 hasil_2001 = angka1_2001 * angka2_2001
 print("\nOperator Perkalian")
-print("Hasil", hasil_2001)
+print("Hasil =", hasil_2001)
 
 # Pembagian, pembagian bulat, dan sisa bagi
 if angka2_2001 != 10:
