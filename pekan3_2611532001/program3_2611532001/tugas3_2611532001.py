@@ -19,7 +19,6 @@ print("Belanja >= Rp200000 :", total_2001 >= 200000)
 print("Jumlah Barang >= 3  :", jumlah_2001 >= 3)
 print("Status Member       :", status_2001 == "member")
 print("Kode Promo Tersedia :", kode_2001 in daftar_kode_2001)
-# Ditambah operator 'not in' & 'not' biar memenuhi syarat operator logika/membership
 print("Kode Promo Expired  :", kode_2001 not in daftar_kode_2001)
 print("Mendapatkan Diskon  :", (status_2001 == "member") and ((total_2001 >= 200000) or (jumlah_2001 >= 3)))
 print("Mendapatkan Promo   :", kode_2001 in daftar_kode_2001 and not (status_2001 == "nonmember"))
@@ -33,7 +32,6 @@ else:
 
 bayar_2001 = total_2001 - diskon_2001
 
-# Ditambah operator penugasan (augmented assignment +=) & modulo (%)
 sisa_barang_2001 = jumlah_2001 % 3
 bayar_akhir_2001 = bayar_2001
 bayar_akhir_2001 += 0
@@ -42,11 +40,9 @@ print("\n=== HASIL PERHITUNGAN ===")
 print("Diskon                 : Rp", diskon_2001)
 print("Total Pembayaran       : Rp", bayar_2001)
 print("Rata-Rata Harga Barang : Rp", bayar_2001 / jumlah_2001)
-# Output tambahan operator aritmatika % dan penugasan +=
 print("Sisa Pembagian Barang  :", sisa_barang_2001)
-print("Total Akhir (Penugasan): Rp", bayar_akhir_2001)
+print("Total Akhir            : Rp", bayar_akhir_2001)
 
-# Ditambah pembuktian operator identitas (is & is not)
 cek_tipe_2001 = type(bayar_2001) is float
 cek_identitas_2001 = total_2001 is not bayar_2001
 
@@ -55,9 +51,8 @@ print("Kode Hak Akses       : ")
 print("Member Access        : ", status_2001 == "member")
 print("Promo Access         : ", kode_2001 in daftar_kode_2001)
 print("Free Shipping Access : ")
-# Output tambahan operator identitas
-print("Cek Tipe Float (is)  : ", cek_tipe_2001)
-print("Cek Identitas (is not): ", cek_identitas_2001)
+print("Cek Tipe Float       : ", cek_tipe_2001)
+print("Cek Identitas        : ", cek_identitas_2001)
 
 bit_member_2001 = 0b0000
 bit_total_2001 = 0b0000
