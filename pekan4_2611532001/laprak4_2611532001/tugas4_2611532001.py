@@ -1,136 +1,113 @@
-# ==============================================================================
-# PROGRAM: SISTEM TRANSAKSI TOKO
-# MODUL: OPERATOR PYTHON
-# ==============================================================================
+# ==========================================
+# 1. HEADER DAN INPUT DATA PENGUNJUNG
+# ==========================================
+print("=== SISTEM LOKET ALPRO ADVENTURE PARK ===")
+nama_2001 = input("Masukkan Nama Pengunjung     : ")
+umur_2001 = int(input("Input Umur Anda              : "))
+is_simC_2001 = input("Apakah Anda Punya SIM C (y/t): ").strip().lower()[0]
 
-# --- 1. MENGELUARKAN HEADER & MENERIMA MASUKAN (INPUT) DENGAN TYPE CASTING ---
-print("=== SISTEM TRANSAKSI TOKO ===")
-nama_2001 = input("Masukkan Nama Pelanggan    : ")
-status_2001 = input("Masukkan Status Pelanggan (member/nonmember) : ").strip().lower()
-total_2001 = int(input("Masukkan Total Belanja     : "))
-jumlah_2001 = int(input("Masukkan Jumlah Barang     : "))
-kode_2001 = input("Masukkan Kode Promo        : ").strip().upper()
+print("\nPilihan Paket Wahana (1-5)")
+print(" 1. Safari Rimba         (Rp 50,000)")
+print(" 2. Arung Jeram          (Rp 75,000)")
+print(" 3. Motor ATV Ekstrim    (Rp 120,000)")
+print(" 4. Roller Coaster Kilat (Rp 100,000)")
+print(" 5. All-Access VIP       (Rp 220,000)")
 
-# --- 2. MENAMPILKAN RINGKASAN DATA MASUKAN ---
-print("\n=== DATA TRANSAKSI ===")
-print("Nama Pelanggan   :", nama_2001)
-print("Status Pelanggan :", status_2001)
-print("Total Belanja    : Rp", total_2001)
-print("Jumlah Barang    :", jumlah_2001)
-print("Kode Promo       :", kode_2001)
 
-# --- 3. DEKLARASI KOLEKSI DATA (LIST KODE PROMO) ---
-daftar_kode_2001 = ["HEMAT10", "HEMAT20", "GRATISONGKIR"]
+# ==========================================
+# 2. PEMILIHAN PAKET WAHANA (MATCH-CASE)
+# ==========================================
+while True:
+    input_tiket_2001 = int(input("Masukkan nomor paket (1-5)     : "))
 
-# --- 4. EVALUASI KONDISI DENGAN OPERATOR PERBANDINGAN, LOGIKA & KEANGGOTAAN ---
-print("\n=== Hasil Validasi ===")
-print("Belanja >= Rp200000 :", total_2001 >= 200000)
-print("Jumlah Barang >= 3  :", jumlah_2001 >= 3)
-print("Status Member       :", status_2001 == "member")
-print("Kode Promo Tersedia :", kode_2001 in daftar_kode_2001)
-print("Kode Promo Expired  :", kode_2001 not in daftar_kode_2001)
-print("Mendapatkan Diskon  :", (status_2001 == "member") and ((total_2001 >= 200000) or (jumlah_2001 >= 3)))
-print("Mendapatkan Promo   :", kode_2001 in daftar_kode_2001 and not (status_2001 == "nonmember"))
+    match input_tiket_2001:
+        case 1:
+            jenis_wahana_2001 = "Wahana Safari Rimba"
+            harga_2001 = 50000
+            break
+        case 2:
+            jenis_wahana_2001 = "Wahana Arung Jeram"
+            harga_2001 = 75000
+            break
+        case 3:
+            jenis_wahana_2001 = "Wahana Motor ATV Ekstrim"
+            harga_2001 = 120000
+            break
+        case 4:
+            jenis_wahana_2001 = "Wahana Roller Coaster Kilat"
+            harga_2001 = 100000
+            break
+        case 5:
+            jenis_wahana_2001 = "Wahana All-Access VIP"
+            harga_2001 = 220000
+            break
+        case _:
+            print("\nNomor Paket Tidak Valid. Silakan Pilih Kembali!")
 
-# --- 5. STRUKTUR PERCABANGAN UNTUK PENENTUAN DISKON ---
-if kode_2001 == daftar_kode_2001[0]:
-    diskon_2001 = total_2001 / 10
-elif kode_2001 == daftar_kode_2001[1]:
-    diskon_2001 = total_2001 / 20
+
+# ==========================================
+# 3. INPUT JUMLAH TIKET DAN STATUS TAMBAHAN
+# ==========================================
+while True:
+    jumlah_tiket_2001 = int(input("Masukkan jumlah tiket          : "))
+    if (jumlah_tiket_2001 > 0):
+        break
+    else:
+        print("\nJumlah Tiket Tidak Valid. Silakan Masukan Kembali!")
+
+is_member_2001 = input("Apakah Anda member? (y/t)      : ").strip().lower()[0]
+is_kode_2001 = input("Apakah kode promo valid? (y/t) : ").strip().lower()[0]
+
+is_kondisi_2001 = True
+total_diskon_2001 = 0
+
+
+# ==========================================
+# 4. VALIDASI KELAYAKAN PENGENDARA WAHANA
+# ==========================================
+print("\n--- KELAYAKAN PENGENDARA WAHANA ---")
+if (input_tiket_2001 == 3):
+    if (umur_2001 >= 17 and is_simC_2001 == "y"):
+        print(f"STATUS AKSES : Anda Sudah Dewasa dan Boleh Menaiki {jenis_wahana_2001} Sendiri.")
+    elif (umur_2001 >= 17 and is_simC_2001 != "y"):
+        print(f"STATUS AKSES : Anda Sudah Dewasa tetapi Tidak Boleh Menaiki {jenis_wahana_2001} Sendiri (Wajib Didampingi Instruktur).")
+    elif (umur_2001 < 17 and is_simC_2001 == "y"):
+        print(f"IDENTITAS TIDAK VALID: Belum Cukup Umur Memiliki SIM.")
+        is_kondisi_2001 = False
+    else:
+        print(f"Anda Belum Cukup Umur dan Tidak Boleh Menaiki {jenis_wahana_2001}.")
+        is_kondisi_2001 = False
 else:
-    diskon_2001 = 15000
+    if (umur_2001 >= 10):
+        print(f"STATUS AKSES : Batas Umur Tercukupi dan Anda Boleh Menaiki {jenis_wahana_2001}.")
+    else:
+        print(f"STATUS AKSES : Anda Tidak Cukup Umur dan Tidak Boleh Menaiki {jenis_wahana_2001}.")
+        is_kondisi_2001 = False
 
-# --- 6. OPERASI ARITMETIKA & PENUGASAN (ASSIGNMENT) ---
-bayar_2001 = total_2001 - diskon_2001
 
-sisa_barang_2001 = jumlah_2001 % 3
-bayar_akhir_2001 = bayar_2001
-bayar_akhir_2001 += 0
+# ==========================================
+# 5. AKUMULASI DISKON & RINCIAN PEMBAYARAN
+# ==========================================
+if is_kondisi_2001:
+    if (harga_2001 * jumlah_tiket_2001 >= 200000):
+        total_diskon_2001 += 10
+    if (is_member_2001 == "y"):
+        total_diskon_2001 += 5
+    if (is_kode_2001 == "y"):
+        total_diskon_2001 += 15
+    if (jumlah_tiket_2001 >= 5):
+        total_diskon_2001 += 5
 
-# --- 7. MENAMPILKAN HASIL PERHITUNGAN TRANSAKSI ---
-print("\n=== HASIL PERHITUNGAN ===")
-print("Diskon                 : Rp", diskon_2001)
-print("Total Pembayaran       : Rp", bayar_2001)
-print("Rata-Rata Harga Barang : Rp", bayar_2001 / jumlah_2001)
-print("Sisa Pembagian Barang  :", sisa_barang_2001)
-print("Total Akhir            : Rp", bayar_akhir_2001)
+    print("\n--- Rincian Pembayaran ---")
+    print(f"Subtotal Belanja : Rp {harga_2001 * jumlah_tiket_2001:,.0f}")
+    print(f"Total Diskon     : {total_diskon_2001}% (Rp {(harga_2001 * jumlah_tiket_2001) * (total_diskon_2001 / 100):,.0f})")
+    print(f"Total Bayar       : Rp {(harga_2001 * jumlah_tiket_2001) - ((harga_2001 * jumlah_tiket_2001) * (total_diskon_2001 / 100)):,.0f}")
+    if ((harga_2001 * jumlah_tiket_2001) - ((harga_2001 * jumlah_tiket_2001) * (total_diskon_2001 / 100)) > 300000):
+            print("Selamat! Anda berhak mendapatkan Souvenir Gratis.")
+    print("Catatan Layanan  : Terima kasih telah berkunjung.")
+    
 
-# --- 8. EVALUASI OPERATOR IDENTITAS (IS & IS NOT) ---
-cek_tipe_2001 = type(bayar_2001) is float
-cek_identitas_2001 = total_2001 is not bayar_2001
-
-# --- 9. MENAMPILKAN VALIDASI HAK AKSES PELANGGAN ---
-print("\n=== HAK AKSES PELANGGAN ===")
-print("Kode Hak Akses       : ")
-print("Member Access        : ", status_2001 == "member")
-print("Promo Access         : ", kode_2001 in daftar_kode_2001)
-print("Free Shipping Access : ")
-print("Cek Tipe Float       : ", cek_tipe_2001)
-print("Cek Identitas        : ", cek_identitas_2001)
-
-# --- 10. INISIALISASI BITWISE FLAG (KODE STATUS 4-BIT) ---
-bit_member_2001 = 0b0000
-bit_total_2001 = 0b0000
-bit_jumlah_2001 = 0b0000
-bit_kode_2001 = 0b0000
-
-# Penentuan aktifasi bit berdasarkan kondisi
-if status_2001 == "member":
-    bit_member_2001 = 0b0001
-if total_2001 >= 200000:
-    bit_total_2001 = 0b0010
-if jumlah_2001 >= 3:
-    bit_jumlah_2001 = 0b0100
-if kode_2001 in daftar_kode_2001:
-    bit_kode_2001 = 0b1000
-
-# Penggabungan bit flag dengan operator Bitwise OR (|)
-bit_status_2001 = bit_member_2001 | bit_total_2001 | bit_jumlah_2001 | bit_kode_2001
-bit_referensi_2001 = 0b1111
-
-# --- 11. MANIPULASI & PEMERIKSAAN DATA BITWISE (AND, XOR, LEFT SHIFT) ---
-print("\n=== OPERASI BITWISE ===")
-print("\n=== Kode Status Transaksi ===")
-print(format(bit_member_2001, "04b"), " | ", format(bit_total_2001, "04b"), " | ", format(bit_jumlah_2001, "04b"), " | ", format(bit_kode_2001, "04b"))
-print("Kode Biner   :", format(bit_status_2001, "04b"))
-print("Kode Desimal :", bit_status_2001)
-
-# Pengecekan bit individual dengan Bitwise AND (&)
-print("\n=== Pemeriksaan Status ===")
-print("Cek Member")
-print("1111 & 0001")
-print("Kode Biner   :", format(bit_status_2001 & bit_member_2001, "04b"))
-print("Kode Desimal :", bit_status_2001 & bit_member_2001)
-
-print("\nCek Total")
-print("1111 & 0010")
-print("Kode Biner   :", format(bit_status_2001 & bit_total_2001, "04b"))
-print("Kode Desimal :", bit_status_2001 & bit_total_2001)
-
-print("\nCek Jumlah")
-print("1111 & 0100")
-print("Kode Biner   :", format(bit_status_2001 & bit_jumlah_2001, "04b"))
-print("Kode Desimal :", bit_status_2001 & bit_jumlah_2001)
-
-print("\nCek Promo")
-print("1111 & 1000")
-print("Kode Biner   :", format(bit_status_2001 & bit_kode_2001, "04b"))
-print("Kode Desimal :", bit_status_2001 & bit_kode_2001)
-
-# Perbandingan bit status dengan Bitwise XOR (^)
-print("\n=== Perbandingan Status ===")
-print("Kode Transaksi :", format(bit_status_2001, "04b"))
-print("Kode Referensi :", format(bit_referensi_2001, "04b"))
-print(format(bit_status_2001, "04b"), " ^ ", format(bit_referensi_2001, "04b"))
-print("Hasil Biner    :", format(bit_status_2001 ^ bit_referensi_2001, "04b"))
-print("Hasil Desimal  :", bit_status_2001 ^ bit_referensi_2001)
-
-# Pergeseran bit dengan Bitwise Left Shift (<<)
-bin_shift_2001 = bit_status_2001 << 1
-print("\n=== Shift ===")
-print(format(bit_status_2001, "04b"), " << ", 1)
-print("Hasil Biner    :", format(bin_shift_2001, "04b"))
-print("Hasil Desimal  :", bin_shift_2001)
-
-# --- 12. AKHIR PROGRAM ---
-print("\n=== SELESAI ===")
+# ==========================================
+# 6. PENUTUP PROGRAM
+# ==========================================
+print("\nProgram Selesai")
