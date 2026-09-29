@@ -5,11 +5,11 @@
 ulang_2001 = int(input("Masukkan jumlah perulangan: "))
 
 jumlah_2001 = 0
-for i in range(1, ulang_2001+1):
-    print(i, end=" ")
-    jumlah_2001 = jumlah_2001 + i
+for i_2001 in range(1, ulang_2001 + 1):
+    print(i_2001, end=" ")
+    jumlah_2001 = jumlah_2001 + i_2001
 
-    if i < ulang_2001:
+    if i_2001 < ulang_2001:
         print(" + ", end=" ")
     else:
         print(" = ", jumlah_2001, end=" ")
